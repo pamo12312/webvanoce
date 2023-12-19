@@ -1,18 +1,16 @@
 function addTask() {
-    var taskInput = document.getElementById("taskInput");
-    var taskList = document.getElementById("taskList");
-
-    if (taskInput.value.trim() === "") {
-        alert("Please enter a task!");
-        return;
-    }
-
-    var newTask = document.createElement("li");
+    let taskInput = document.getElementById("taskInput");
+    let taskList = document.getElementById("taskList");
+    let newTask = document.createElement("div");
+    newTask.className="p";
     newTask.textContent = taskInput.value;
-    newTask.onclick = function () {
-        this.parentNode.removeChild(this);
+    let removeButton = document.createElement("button");
+    removeButton.textContent = "Remove";
+    removeButton.className = "remove";
+    removeButton.onclick = function() {
+        taskList.removeChild(newTask);
     };
-
+    newTask.appendChild(removeButton);
     taskList.appendChild(newTask);
     taskInput.value = "";
 }
